@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by fitted implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>TOKEN RADAR <span class="v">v2</span></h1>
+    <p class="sub">Every pre-token protocol in the snapshot, ranked by what its token would be worth if it launched at the size the live market already pays for. Implied values are this entry's own claim, not a prediction that a token launches.</p>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="panel" id="modelPanel">
+  <h2>How the model was tested</h2>
+  <p class="note">Implied value = fitted size curve on live-token comparables, times a 7-day growth factor (clamped 0.8–1.2), times an age factor (0.85–1.00, older unlaunched protocols score lower). Curve: log<sub>10</sub>(mcap) = a + b&middot;log<sub>10</sub>(TVL), fitted per category when it has &ge;5 live comps, otherwise shrunk to the global fit. Capped at 10&times; TVL.</p>
+  <div class="modelgrid">
+    <div><h3>Out-of-sample validation</h3><div id="validation"></div></div>
+    <div><h3>Size-curve fits per category</h3><div class="scroll"><table id="fitsTable"><thead><tr><th>Category</th><th>Slope</th><th>Intercept</th><th>Comps</th><th>Median MC/TVL</th><th>Fit</th></tr></thead><tbody></tbody></table></div></div>
+  </div>
+</section>
+
+<section class="controls">
+  <input id="search" type="search" placeholder="Search protocol name or slug…" aria-label="Search protocols">
+  <select id="chainFilter" aria-label="Filter by chain"><option value="">All chains</option></select>
+  <div class="status" role="group" aria-label="Token status">
+    <button class="pill on" data-status="pre">Pre-token board</button>
+    <button class="pill" data-status="live">Live tokens (comps)</button>
+  </div>
+  <div class="pills" id="catPills"></div>
+</section>
+
+<main>
+  <aside id="detail" hidden></aside>
+
+  <section id="boardWrap">
+    <p class="count" id="countLine"></p>
+    <div class="scroll boardscroll"><table id="board">
+      <thead><tr>
+        <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="cat">Category</th>
+        <th data-k="tvl">TVL</th><th data-k="chg">7d</th><th data-k="age">Days unlaunched</th>
+        <th data-k="implied">Implied value</th><th>Farm plan</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p class="hint">Click a row for the detail view: model breakdown, farm verdict and costed steps. Click a column header to sort.</p>
+  </section>
+
+  <section id="liveWrap" hidden>
+    <h2>Live tokens — the comparables</h2>
+    <p class="note">These <span id="liveCount"></span> protocols already have a token trading. They are NOT ranked on the board — they are the comps the size curve is fitted on, shown so the model's basis is transparent.</p>
+    <div class="scroll"><table id="liveTable">
+      <thead><tr><th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>MC / TVL</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Snapshot as of <span id="asOf"></span> &middot; floor $50M &middot; Data: DefiLlama protocols snapshot sealed for this competition. A protocol is listed as pre-token because its record shows no token — that is not proof it has none.</p>
+</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
