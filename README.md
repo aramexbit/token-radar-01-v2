@@ -1,5 +1,9 @@
 # token-radar-01 v2 — Token Launch Radar
 
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/aramexbit/token-radar-01-v2/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/aramexbit/token-radar-01-v2/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+
 A token launch radar: every pre-token protocol in the sealed snapshot, ranked by
 a fitted implied value, with a costed, timed farm plan per protocol.
 
@@ -34,3 +38,7 @@ Node 22 stdlib only. `main.ts` writes `board.json`, the dashboard (`dashboard/`
 ## License
 
 MIT
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=rrcbfccn&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
